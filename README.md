@@ -17,7 +17,7 @@ Clone the repository and get ready to play!
 
 ```bash
 git clone https://github.com/lucafacchini0/FacchiniGames.git
-cd FacchiniGames
+cd FacchiniGames/src
 ```
 
 ## 🕹️ How to Play
