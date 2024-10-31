@@ -2,14 +2,6 @@
 
 Welcome to **FacchiniGames** – a playground of exciting CLI games, all made with C++! Here, you'll find a variety of games to play right in your terminal. 🎉
 
-## 📋 Table of Contents
-- [About the Project](#about-the-project)
-- [Games Included](#games-included)
-- [Getting Started](#getting-started)
-- [How to Play](#how-to-play)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## 🎯 About the Project
 This project is a collection of C++ CLI games aimed to bring some fun and joy, but also to motivate you if you like coding! From classic games to original creations, there's something for everyone! Whether you're a seasoned coder or a gaming enthusiast, this project has got something for you. 🕹️
 
