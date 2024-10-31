@@ -51,3 +51,5 @@ private:
     string wordCopy;
     const string word;
 };
+
+//
