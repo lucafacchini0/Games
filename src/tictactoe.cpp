@@ -4,7 +4,6 @@
 #include "../include/misc.h"
 #include "../include/colors.h"
 
-// 3x3 char board filled with 0
 char board[3][3] = {
     {'0', '0', '0'},
     {'0', '0', '0'},
@@ -33,57 +32,45 @@ static void showChooseDifficultyMenu() {
     std::cout << std::endl;
 }
 
-int makeChoice() {
+int makeChoice(int min = 1, int max = 3) {
     int value = -1;
-
     std::cin >> value;
-
-    while((value < 1 || value > 3)) {
+    while(value < min || value > max) {
         std::cout << RED << "Invalid value. Try again." << RESET << std::endl;
         std::cout << "Enter the value again: ";
         std::cin >> value;
     }
-
     return value;
 }
 
 bool validChoice(int row, int column) {
-    if(board[row][column] == '0') {
-        return true;
-    }
-
-    return false;
+    return board[row][column] == '0';
 }
 
 static void startGame(int difficulty) {
     if(difficulty == 1) {
-
-
         bool stillPlayingFlag = true;
 
         while(stillPlayingFlag) {
-
             bool validChoiceFlag = false;
 
             while(!validChoiceFlag) {
                 std::cout << std::endl;
-                std::cout << GREEN << "Enter the row: " << RESET;
-                int selectedRow = makeChoice();
+                std::cout << GREEN << "Enter the row (1-3): " << RESET;
+                int selectedRow = makeChoice(1, 3) - 1; // Convert to 0-based index
 
                 std::cout << std::endl;
-                std::cout << GREEN << "Enter the column: " << RESET;
-                int selectedColumn = makeChoice();
+                std::cout << GREEN << "Enter the column (1-3): " << RESET;
+                int selectedColumn = makeChoice(1, 3) - 1; // Convert to 0-based index
 
-                // function to validate the choice
+                // Validate the choice
                 if(validChoice(selectedRow, selectedColumn)) {
                     validChoiceFlag = true;
-                    board[selectedRow-1][selectedColumn-1] = 'X';
+                    board[selectedRow][selectedColumn] = 'X';
                 } else {
-                    std::cout << RED << "Invalid choice. Try again." << RESET << std::endl;
+                    std::cout << RED << "Invalid choice. Spot already taken. Try again." << RESET << std::endl;
                 }
-
             }
-
             showBoard();
         }
     }
@@ -95,19 +82,10 @@ int startTicTacToeGame() {
     while(playAgain) {
         srand(static_cast<unsigned int>(time(nullptr)));
 
-        int difficulty = -1;
         clearScreen();
         showChooseDifficultyMenu();
         std::cout << GREEN << "Enter your choice: " << RESET;
-        std::cin >> difficulty;
-
-        while (difficulty < 0 || difficulty > 3) {
-            clearScreen();
-            showChooseDifficultyMenu();
-            std::cout << RED << "Invalid. Try again." << RESET << std::endl;
-            std::cout << GREEN << "Enter your choice: " << RESET;
-            std::cin >> difficulty;
-        }
+        int difficulty = makeChoice(0, 3);
 
         if (difficulty == 0) {
             return -1;
@@ -124,8 +102,12 @@ int startTicTacToeGame() {
             std::cout << std::endl;
             std::cout << GREEN << "Goodbye!" << RESET << std::endl;
             playAgain = false;
+        } else {
+            // Reset the board for a new game
+            for(int i = 0; i < 3; i++)
+                for(int j = 0; j < 3; j++)
+                    board[i][j] = '0';
         }
-
     }
 
     return 0;
