@@ -1,9 +1,10 @@
 #include <iostream>
 #include "../include/colors.h"
 #include "../include/hangman.h"
+#include "../include/tictactoe.h"
 #include "../include/misc.h"
 
-const int TOTAL_GAMES = 1;
+const int TOTAL_GAMES = 2;
 
 
 void displayMenu() {
@@ -15,6 +16,7 @@ void displayMenu() {
     std::cout << GREEN << "Choose an option" << RESET << std::endl;
     std::cout << std::endl;
     std::cout << BLUE << "1. " << RESET << "Hangman Game" << std::endl;
+    std::cout << BLUE << "2. " << RESET << "TicTacToe Game" << std::endl;
     std::cout << RED << "0. " << RESET << "Exit" << std::endl;
     std::cout << std::endl;
 }
@@ -40,6 +42,7 @@ int main() {
         }
 
         if(choice == 1) { startHangmanGame(); }
+        if(choice == 2) { startTicTacToeGame(); }
         if(choice == 0) {
             std::cout << GREEN << "Goodbye!" << RESET << std::endl;
             play = false;

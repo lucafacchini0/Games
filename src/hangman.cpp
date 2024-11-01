@@ -17,8 +17,9 @@ const string HARD_FILE_PATH = "../assets/hangman/hardWords.txt";
 
 constexpr int MAX_TRIES = 10;
 
-void showChooseDifficultyMenu() {
+static void showChooseDifficultyMenu() {
     std::cout << std::endl;
+    std::cout << BOLDYELLOW << centerText("Hangman Game") << RESET << std::endl;
     std::cout << MAGENTA << centerText("Choose the difficulty:") << RESET << std::endl;
     std::cout << std::endl;
     std::cout << GREEN << "EASY [1]" << RESET << std::endl;
@@ -49,7 +50,7 @@ bool isValidGuess(const string& guess, const string& currentWord) {
     return true;
 }
 
-void startGame(const string& filePath, const string& difficultyText, const string& color) {
+static void startGame(const string& filePath, const string& difficultyText, const string& color) {
     // File stream
     std::ifstream wordsFile(filePath);
     if (!wordsFile.is_open()) {
