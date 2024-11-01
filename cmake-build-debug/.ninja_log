@@ -1,0 +1,9 @@
+# ninja log v6
+6	396	7521164621692398	CMakeFiles/FacchiniGames.dir/src/main.cpp.obj	51d47769f385bdeb
+537	655	7521164626999558	FacchiniGames.exe	32be4fb2bbe7c090
+13	537	7521164621767532	CMakeFiles/FacchiniGames.dir/src/hangman.cpp.obj	781b8b9f32efe092
+13	354	7521082996292827	CMakeFiles/FacchiniGames.dir/src/misc.cpp.obj	cad9148336c86769
+22	399	7521657221190701	CMakeFiles/FacchiniGames.dir/src/misc.cpp.obj	8f0577b23bfccfcc
+8	441	7521657221050684	CMakeFiles/FacchiniGames.dir/src/main.cpp.obj	42cbdba882961c57
+15	572	7521657221130687	CMakeFiles/FacchiniGames.dir/src/hangman.cpp.obj	828122c9045f27d9
+573	701	7521657226702186	FacchiniGames.exe	32be4fb2bbe7c090
