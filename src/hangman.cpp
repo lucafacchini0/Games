@@ -126,32 +126,48 @@ void startGame(const string& filePath, const string& difficultyText, const strin
 }
 
 int startHangmanGame() {
-    srand(static_cast<unsigned int>(time(nullptr)));
+    bool playAgain = true;
 
-    int difficulty = -1;
-    clearScreen();
-    showChooseDifficultyMenu();
-    std::cout << GREEN << "Enter your choice: " << RESET;
-    std::cin >> difficulty;
+    while(playAgain) {
+        srand(static_cast<unsigned int>(time(nullptr)));
 
-    while (difficulty < 0 || difficulty > 3) {
+        int difficulty = -1;
         clearScreen();
         showChooseDifficultyMenu();
-        std::cout << RED << "Invalid. Try again." << RESET << std::endl;
         std::cout << GREEN << "Enter your choice: " << RESET;
         std::cin >> difficulty;
-    }
 
-    if (difficulty == 0) {
-        return -1;
-    }
+        while (difficulty < 0 || difficulty > 3) {
+            clearScreen();
+            showChooseDifficultyMenu();
+            std::cout << RED << "Invalid. Try again." << RESET << std::endl;
+            std::cout << GREEN << "Enter your choice: " << RESET;
+            std::cin >> difficulty;
+        }
 
-    if (difficulty == 1) {
-        startGame(EASY_FILE_PATH, "EASY", BOLDGREEN);
-    } else if (difficulty == 2) {
-        startGame(MEDIUM_FILE_PATH, "MEDIUM", BOLDYELLOW);
-    } else if (difficulty == 3) {
-        startGame(HARD_FILE_PATH, "HARD", BOLDRED);
+        if (difficulty == 0) {
+            return -1;
+        }
+
+        if (difficulty == 1) {
+            startGame(EASY_FILE_PATH, "EASY", BOLDGREEN);
+        } else if (difficulty == 2) {
+            startGame(MEDIUM_FILE_PATH, "MEDIUM", BOLDYELLOW);
+        } else if (difficulty == 3) {
+            startGame(HARD_FILE_PATH, "HARD", BOLDRED);
+        }
+
+        std::cout << std::endl;
+        std::cout << YELLOW << "Do you want to play again? [Y/N]: " << RESET;
+        char choice;
+        std::cin >> choice;
+
+        if(!(choice == 'Y' || choice == 'y')) {
+            std::cout << std::endl;
+            std::cout << GREEN << "Goodbye!" << RESET << std::endl;
+            playAgain = false;
+        }
+
     }
 
     return 0;
